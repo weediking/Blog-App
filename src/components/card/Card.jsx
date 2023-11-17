@@ -3,9 +3,8 @@ import styles from "./card.module.css"
 import Link from 'next/link'
 import Image from 'next/image'
 
-const Card = ({key,item}) => {
+const Card = ({ key,item }) => {
   return (
-    <div>
       <div className={styles.container} key={key}>
         {item.img && (
         <div className={styles.imageContainer}>
@@ -20,9 +19,8 @@ const Card = ({key,item}) => {
           <Link href={`/posts/${item.slug}`}>
           <h1>{item.title}</h1>
           </Link>
-          <p className={styles.desc}>{item.desc.substring(0,60)}</p>
+          <div className={styles.desc} dangerouslySetInnerHTML={{ __html: item?.desc.substring(0,60) }}/>
           <Link href={`/posts/${item.slug}`} className={styles.link}>Read More</Link>
-        </div>
       </div>
     </div>
   )
